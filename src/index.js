@@ -1,5 +1,11 @@
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import { FilterContextProvider } from "./Store/filter-context";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <FilterContextProvider>
+    <App />
+  </FilterContextProvider>,
+  document.getElementById("root")
+);

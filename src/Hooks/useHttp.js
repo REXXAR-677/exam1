@@ -10,9 +10,13 @@ const useHttp = (url) => {
     try {
       const response = await fetch(url);
       if (response.ok) {
-        const fetchedData = await response.json();
-        setData(fetchedData);
-        setIsLoading(false);
+        try {
+          const fetchedData = await response.json();
+          setData(fetchedData);
+          setIsLoading(false);
+        } catch (err) {
+          setError(err)
+        }
       }
       setIsLoading(false);
     } catch (err) {
