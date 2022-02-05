@@ -1,48 +1,65 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import useHttp from "../../Hooks/useHttp";
 import filterContext from "../../Store/filter-context";
-import { news } from "../../Assets/news";
+import FilterDropdown from "./FilterDropdown";
+import CardItem from "./CardItem";
 
-const Body = () => {
-  const [data, setData] = useState([]);
-  // const [data, setData] = useState(news);
+const Body = (props) => {
   const ctx = useContext(filterContext);
-  const url = ctx.url;
+  const { isLoading, error, data: dataFetched } = useHttp(ctx.url);
 
-  const { isLoading, error, data: dataFetched } = useHttp(url);
-  useEffect(()=>{setData(dataFetched.hits)},[dataFetched])
-  
+  useEffect(() => {
+    props.setNum(dataFetched.length);
+  }, [dataFetched, props]);
+
   if (isLoading) {
     return <h1>Loading ...</h1>;
   }
-  ctx.calculatePagination(data.length, ctx.postsPerPage);
-  
-  if(error){
-    console.log(error)
-    return <h4>Something went wrong while fetching!</h4>
-  }
-  
-  const currentPosts = data.slice(ctx.indexOfFirstPost, ctx.indexOfLastPost);
+
+  const currentPosts = dataFetched.slice(
+    ctx.indexOfFirstPost,
+    ctx.indexOfLastPost
+  );
 
   return (
     <div>
-      {error && <h3>Something went wrong!</h3>}
-      <ol>
-        {currentPosts.map((i) => (
-          <li key={i.objectID}>
-            <p>{i.story_title || i.title}</p>
-            <button
-              onClick={() => {
-                console.log(i);
-              }}
-            >
-              fav
-            </button>
-          </li>
-        ))}
-      </ol>
+      {error && <h3>Something went wrong while fetching!</h3>}
+      {!error && (
+        <section>
+          <FilterDropdown />
+          <ul>
+            {currentPosts.map((i) => (
+              <CardItem
+                key={i.objectID}
+                title={i.story_title || i.title}
+                url={i.story_url || i.url}
+                item={i}
+                created={i.created_at}
+                author={i.author}
+              />
+            ))}
+          </ul>
+        </section>
+      )}
     </div>
   );
 };
 
 export default Body;
+
+/*
+PRIMERO:
+- DEJA DE HACER EL SLICE Y PON LOS 20 RESULTADOS
+- RETORNA DEL USEHTTP LOS TODO LOS DATOS Y VERIFICA Q SEAN DE REACT, VUE, ANGULAR
+
+SEGUNDO:
+- PARA LA PRIMERA FETCH, PON EL NUMERO DE PAGINAS DE 1 A 50 Y QUE HAGAN SU RESPECTIVO SCROLL
+- CADA PAGINA ALTERARA EL ENLACE DEL FETCH PARA FETCHEAR CADA PAGINA CORRESPONDIENTE (NUM -1) SIENDO PARA 50 => 49
+
+TERCERO:
+- AÑADE CADA UNO DE LOS ELEMENTOS DE FAVORITOS EN LOCALSTORAGE CON SU RESPECTIVO ID DE NOTICIA (REACT...)
+- AÑADE FUNCIONALIDAD DE FAVORITOS Y PAGINA DE FAVORITOS CON SUS DEBIDOS COMPONENTES INDIVIDUALES
+
+CUARTO:
+- AÑADE LOS ESTILOS Y TRASICIONES, CON VARIABLES DE CSS
+*/

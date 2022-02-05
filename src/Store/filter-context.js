@@ -4,14 +4,10 @@ const filterContext = React.createContext({
   url: "",
   filterNews: "",
   myFavesNews: [],
-  pagesNumbers: [],
-  totalPosts: 10,
-  postsPerPage: 8,
-  currentPage: 1,
   indexOfFirstPost: 0,
   indexOfLastPost: 0,
+  changeFilter: (filter) => {},
   setCurrentPage: (number) => {},
-  calculatePagination: () => {},
   setMyFaves: (item) => {},
   removeMyFaves: (item) => {},
   nextPage: () => {},
@@ -20,64 +16,63 @@ const filterContext = React.createContext({
 
 export const FilterContextProvider = (props) => {
   const [cPage, setCPage] = useState(1);
-  const [pPerPage, setPPerPage] = useState(8);
-  let faves;
-  let filter = "reactjs"
+  const [pPerPage] = useState(8);
+  const [faves, setFaves] = useState([]);
+  const [filter, setFilter] = useState("reactjs");
   let url = `https://hn.algolia.com/api/v1/search_by_date?query=${filter}&page=0`;
-  let ttlPosts = 5;
-  const pageNumbers = [];
 
   const indexOfLastPost = cPage * pPerPage;
   const indexOfFirstPost = indexOfLastPost - pPerPage;
-
-  const handleCalculatePagination = (totalPosts, postsPerPage) => {
-    for (let i = 1; i < Math.ceil(totalPosts / postsPerPage) + 1 ; i++) {
-      pageNumbers.push(i);
-    }
-  };
-
-  const handleNextPage = () => {
-    let number = cPage
-    // add logic for handling more than max page
-    number++
-    setCPage(number)
-  };
-
-  const handlePreviousPage = () => {
-    let number = cPage
-    //add logic for handling less than page 1
-    number--
-    setCPage(number)
-  };
-
-  const handleSetMyFaves = () => {};
-
-  const handleRemoveMyFaves = () => {};
 
   const handleCurrentPage = (number) => {
     setCPage(number);
   };
 
+  const handleNextPage = (x) => {
+    let number = cPage;
+    if (cPage >= x) {
+      setCPage(x);
+    } else {
+      number++;
+      setCPage(number);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    let number = cPage;
+    if (cPage <= 1) {
+      setCPage(1);
+    } else {
+      number--;
+      setCPage(number);
+    }
+  };
+
+  const handleChangeFilter = (filter) => {
+    setFilter(filter);
+  };
+
+  const handleSetMyFaves = (item) => {};
+
+  const handleRemoveMyFaves = (item) => {};
+
+  const value = {
+    url: url,
+    filterNews: filter,
+    myFavesNews: faves,
+    postsPerPage: pPerPage,
+    indexOfFirstPost: indexOfFirstPost,
+    indexOfLastPost: indexOfLastPost,
+    changeFilter: handleChangeFilter,
+    setCurrentPage: handleCurrentPage,
+    setMyFaves: handleSetMyFaves,
+    removeMyFaves: handleRemoveMyFaves,
+    nextPage: handleNextPage,
+    previousPage: handlePreviousPage,
+  };
+
   return (
-    <filterContext.Provider
-      value={{
-        url: url,
-        filterNews: filter,
-        myFavesNews: faves,
-        pagesNumbers: pageNumbers,
-        totalPosts: ttlPosts,
-        postsPerPage: pPerPage,
-        currentPage: cPage,
-        indexOfFirstPost: indexOfFirstPost,
-        indexOfLastPost: indexOfLastPost,
-        setCurrentPage: handleCurrentPage,
-        calculatePagination: handleCalculatePagination,
-        setMyFaves: handleSetMyFaves,
-        removeMyFaves: handleRemoveMyFaves,
-        nextPage: handleNextPage,
-        previousPage: handlePreviousPage,
-      }}
-    >
+    <filterContext.Provider value={value}>
       {props.children}
     </filterContext.Provider>
   );

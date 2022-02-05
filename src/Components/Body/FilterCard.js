@@ -1,7 +1,10 @@
-import React from 'react';
-
-const filterCard = () => {
-  return <div></div>;
+const filterCard = (props) => {
+  const handleSelect = () => {
+    props.select(props.item)
+  }
+  return (
+    <p onClick={handleSelect}>{props.children}</p>
+  );
 };
 
 export default filterCard;
