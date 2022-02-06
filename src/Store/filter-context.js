@@ -3,7 +3,6 @@ import React, { useState } from "react";
 const filterContext = React.createContext({
   filterNews: "",
   userFilter: "",
-  currentPage: 1,
   setUserFilter: (filter) => {},
   changeFilter: (filter) => {},
 });

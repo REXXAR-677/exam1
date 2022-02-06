@@ -5,15 +5,12 @@ const useLocalStorage = (key = "", value = "") => {
     try {
       const valueInLocalStorage = localStorage.getItem(key);
       return valueInLocalStorage ? JSON.parse(valueInLocalStorage) : value;
-      /* if the value is already in the local storage, the initial 
-      value will be the value stored in the local storage if not,
-      it will be setted to the entered value */
     } catch (e) {
       console.log(e);
       return value;
     }
   });
-  const [itemsInLocalStorage] = useState([localStorage])
+  const [itemsInLocalStorage] = useState([localStorage]);
   const removeItem = (key) => {
     localStorage.removeItem(key);
   };
@@ -25,11 +22,11 @@ const useLocalStorage = (key = "", value = "") => {
       localStorage.setItem(key, JSON.stringify(valueToStore));
     } catch (error) {
       console.log(error);
+      throw new Error("Something went wrong while adding to faves :(");
     }
   };
-  
-  return [removeItem, addItem, itemsInLocalStorage];
+
+  return [itemsInLocalStorage, removeItem, addItem];
 };
 
 export default useLocalStorage;
-
