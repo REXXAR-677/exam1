@@ -1,16 +1,14 @@
-import { Fragment, useState } from "react";
+import { Fragment, useContext, useState } from "react";
+import filterContext from "../../Store/filter-context";
 import SelectionButtons from "./SelectionButtons";
 
-const options = ["All", "My faves"];
 
 const Header = () => {
-  const [buttons, setButtons] = useState(options[0]);
-
-  let selection = "All";
+  const ctx = useContext(filterContext);
+  const options = ["All", "My faves"];
 
   const handleSelection = (name) => {
-    selection = name;
-    setButtons(name);
+    ctx.setUserFilter(name)
   };
   return (
     <Fragment>
@@ -21,7 +19,7 @@ const Header = () => {
         {options.map((button, index) => (
           <SelectionButtons
             key={index}
-            styl={button === buttons ? "blue" : ""}
+            styl={button === ctx.userFilter ? "blue" : ""}
             selected={(x) => handleSelection(x)}
             children={button}
           />

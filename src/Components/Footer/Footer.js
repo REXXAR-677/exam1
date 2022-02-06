@@ -1,22 +1,27 @@
 import { Fragment, useState, useContext, useEffect } from "react";
 import filterContext from "../../Store/filter-context";
+import paginationContext from "../../Store/pagination-context";
 import ButtonsIcons from "./ButtonsIcons";
 
 const Footer = (props) => {
   const [pagination, setPagination] = useState([]);
-  const ctx = useContext(filterContext);
-  
+  const ctxFilter = useContext(filterContext);
+  const userFilter = ctxFilter.userFilter === "All";
+  const ctxPagination = useContext(paginationContext);
   useEffect(() => {
-    let pag = [];
-    for (let i = 1; i < Math.ceil(props.number / ctx.postsPerPage) + 1; i++) {
-      pag.push(i);
-    }
-    setPagination(pag);
-  },[props, ctx.postsPerPage]);
-
+    let arr = [];
+    const getPagination = () => {
+      let start = Math.floor((ctxPagination.currentPage - 1) / 9) * 9;
+      return (arr = Array(9)
+        .fill()
+        .map((_, index) => start + index + 1));
+    };
+    getPagination();
+    setPagination(arr);
+  }, [props]);
   return (
     <Fragment>
-      <ButtonsIcons number={pagination.length} pagination={pagination} />
+      {userFilter && <ButtonsIcons number={pagination.length} pagination={pagination} />}
     </Fragment>
   );
 };

@@ -4,10 +4,10 @@ import filterContext from "../../Store/filter-context";
 
 const FilterDropdown = () => {
   const [open, setOpen] = useState(false);
-  const ctx = useContext(filterContext);
-  const filter = ["Reactjs", "Angular", "Vuejs"];
+  const ctxFilter = useContext(filterContext);
+  const filter = ["Angular", "Reactjs", "Vuejs"];
   const handleFilter = (filter) => {
-    ctx.changeFilter(filter.toLowerCase());
+    ctxFilter.changeFilter(filter.toLowerCase());
   };
   return (
     <div>

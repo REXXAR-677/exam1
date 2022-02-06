@@ -4,7 +4,6 @@ const useHttp = (url) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);
-  const [rawData, setRawData] = useState({})
 
   useEffect(() => {
     const abortionController = new AbortController();
@@ -16,7 +15,6 @@ const useHttp = (url) => {
           try {
             const fetchedData = await response.json();
             setData(fetchedData.hits);
-            setRawData(fetchedData)
             setIsLoading(false);
           } catch (err) {
             setError(err)
@@ -34,7 +32,7 @@ const useHttp = (url) => {
     }
   }, [url]);
 
-  return { isLoading, error, data , };
+  return { isLoading, error, data };
 };
 
 export default useHttp;
