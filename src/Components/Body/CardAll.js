@@ -1,7 +1,14 @@
 import React from "react";
 import CardItem from "./CardItem";
+import useLocalStorage from "../../Hooks/useLocalStorage";
 
 const CardAll = ({ dataFetched }) => {
+  const [removeItem, addItem, itemsInLocalStorage] = useLocalStorage()
+  const selectedHandler = (selectedNews) => {
+    // addItem(x)
+    // console.log(itemsInLocalStorage)
+    console.log(selectedNews)
+  }
   return (
     <ul>
       {dataFetched.map(
@@ -14,6 +21,7 @@ const CardAll = ({ dataFetched }) => {
               item={i}
               created={i.created_at}
               author={i.author}
+              selected={selectedHandler}
             />
           )
       )}

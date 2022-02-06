@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import useHttp from "../../Hooks/useHttp";
 import filterContext from "../../Store/filter-context";
 import FilterDropdown from "./FilterDropdown";
@@ -6,15 +6,11 @@ import CardAll from "./CardAll";
 import CardFaves from "./CardFaves";
 import paginationContext from "../../Store/pagination-context";
 
-const Body = (props) => {
+const Body = () => {
   const ctxFilter = useContext(filterContext);
   const ctxPagination = useContext(paginationContext);
   const url = `https://hn.algolia.com/api/v1/search_by_date?query=${ctxFilter.filterNews}&page=${ctxPagination.currentPage}`
   const { isLoading, error, data: dataFetched } = useHttp(url);
-  
-  useEffect(() => {
-    props.fetchedData(dataFetched);
-  }, [dataFetched, props]);
 
   return (
     <div>

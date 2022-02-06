@@ -1,24 +1,19 @@
-import { Fragment, useState } from "react";
+import { useContext } from "react";
 import "./App.css";
 import Body from "./Components/Body/Body";
 import Footer from "./Components/Footer/Footer";
 import Header from "./Components/Header/Header";
+import filterContext from "./Store/filter-context";
 
 const App = () => {
-  const [numNews, setNumNews] = useState();
-  const [data, setData] = useState();
-
-  const fetchedData = (item) => {
-    setNumNews(item.length);
-    setData(item);
-  };
-
+  const ctxFilter = useContext(filterContext);
+  const userFilter = ctxFilter.userFilter === "All";
   return (
-    <Fragment>
+    <div>
       <Header />
-      <Body fetchedData={(item) => fetchedData(item)} />
-      <Footer number={numNews} data={data} />
-    </Fragment>
+      <Body />
+      {userFilter && <Footer/>}
+    </div>
   );
 };
 
