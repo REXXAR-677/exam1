@@ -1,18 +1,21 @@
 import CardItem from "./CardItem";
 import useLocalStorage from "../../Hooks/useLocalStorage";
+import { useEffect, useState } from "react";
 
 const CardAll = ({ dataFetched }) => {
-  const [removeItem, addItem, itemsInLocalStorage] = useLocalStorage();
+  const [show, setShow] = useState();
+  const [itemsInLocalStorage, removeItem, addItem, idArray] = useLocalStorage();
+
   const selectedHandler = (selectedNews) => {
     if (itemsInLocalStorage[0].getItem(selectedNews.story_id) === null) {
-      addItem(selectedNews.story_id, selectedNews.story_title);
+      addItem(selectedNews.story_id, selectedNews);
     } else {
       removeItem(selectedNews.story_id);
     }
   };
-  return (
-    <ul>
-      {dataFetched.map(
+  useEffect(() => {
+    setShow(
+      dataFetched.map(
         (i) =>
           i.story_url && (
             <CardItem
@@ -23,12 +26,15 @@ const CardAll = ({ dataFetched }) => {
               created={i.created_at}
               author={i.author}
               selected={selectedHandler}
-              faved={() => {console.log(itemsInLocalStorage[0].getItem(i.story_id) ? true : false)}}
+              id={i.story_id}
+              idArray={idArray}
             />
           )
-      )}
-    </ul>
-  );
+      )
+    );
+  }, [dataFetched, localStorage]);
+
+  return <ul>{show}</ul>;
 };
 
 export default CardAll;

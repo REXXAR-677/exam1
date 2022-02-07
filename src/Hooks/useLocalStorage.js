@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useLocalStorage = (key = "", value = "") => {
+const useLocalStorage = (key = "key", value = "value") => {
   const [storedValue, setStoredValue] = useState(() => {
     try {
       const valueInLocalStorage = localStorage.getItem(key);
@@ -10,7 +10,10 @@ const useLocalStorage = (key = "", value = "") => {
       return value;
     }
   });
+  let idArray = []
   const [itemsInLocalStorage] = useState([localStorage]);
+  const arrayOfItemsInLocalStorage = Object.entries(itemsInLocalStorage[0])
+  arrayOfItemsInLocalStorage.map(i => idArray.push(i[0]))
   const removeItem = (key) => {
     localStorage.removeItem(key);
   };
@@ -26,7 +29,7 @@ const useLocalStorage = (key = "", value = "") => {
     }
   };
 
-  return [itemsInLocalStorage, removeItem, addItem];
+  return [itemsInLocalStorage, removeItem, addItem, idArray];
 };
 
 export default useLocalStorage;

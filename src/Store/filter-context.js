@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import useLocalStorage from "../Hooks/useLocalStorage";
 
 const filterContext = React.createContext({
   filterNews: "",
@@ -8,15 +9,14 @@ const filterContext = React.createContext({
 });
 
 export const FilterContextProvider = (props) => {
-  const [userFilter, setUserFilter] = useState("All")
+  const [userFilter, setUserFilter] = useState("All");
   const [filter, setFilter] = useState("angular");
-
   const handleChangeFilter = (filter) => {
     setFilter(filter);
   };
 
   const handleSetUSerFilter = (filter) => {
-    setUserFilter(filter)
+    setUserFilter(filter);
   };
 
   const value = {

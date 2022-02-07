@@ -1,14 +1,29 @@
 import { ReactComponent as BorderHeart } from "../../Assets/heartOutline.svg";
+import { ReactComponent as FilledHeart } from "../../Assets/heartFilled.svg";
+import "./CardItem.css";
+import { useEffect, useState } from "react";
 
 const CardItem = (props) => {
+  const [style, setStyle] = useState(false);
+
+  useEffect(() => {
+    const check = props.idArray.indexOf(props.id.toString()) !== -1;
+    setStyle(check);
+  }, []);
+  
   const handler = () => {
+    setStyle(!style);
     props.selected(props.item);
   };
+
   return (
     <li>
-      <a href={props.url}>{props.title}</a>
+      <a href={props.url} className={style ? "red" : ""}>
+        {props.title}
+      </a>
       <button onClick={() => handler()}>
-        <BorderHeart />
+        {!style && <BorderHeart />}
+        {style && <FilledHeart />}
       </button>
     </li>
   );
