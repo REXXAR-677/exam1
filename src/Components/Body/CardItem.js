@@ -1,7 +1,7 @@
+import { useEffect, useState } from "react";
 import { ReactComponent as BorderHeart } from "../../Assets/heartOutline.svg";
 import { ReactComponent as FilledHeart } from "../../Assets/heartFilled.svg";
 import "./CardItem.css";
-import { useEffect, useState } from "react";
 
 const CardItem = (props) => {
   const [style, setStyle] = useState(false);

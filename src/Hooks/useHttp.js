@@ -4,6 +4,7 @@ const useHttp = (url) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);
+  const [maxPage, setMaxPage] = useState(null)
 
   useEffect(() => {
     const abortionController = new AbortController();
@@ -14,6 +15,7 @@ const useHttp = (url) => {
         if (response.ok) {
           try {
             const fetchedData = await response.json();
+            setMaxPage(fetchedData.nbPages)
             setData(fetchedData.hits);
             setIsLoading(false);
           } catch (err) {
@@ -32,7 +34,7 @@ const useHttp = (url) => {
     }
   }, [url]);
 
-  return { isLoading, error, data };
+  return { isLoading, error, data , maxPage};
 };
 
 export default useHttp;

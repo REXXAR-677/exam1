@@ -1,16 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import useHttp from "../../Hooks/useHttp";
 import filterContext from "../../Store/filter-context";
 import FilterDropdown from "./FilterDropdown";
 import CardAll from "./CardAll";
 import CardFaves from "./CardFaves";
 import paginationContext from "../../Store/pagination-context";
+import useLocalStorage from "../../Hooks/useLocalStorage";
 
 const Body = () => {
   const ctxFilter = useContext(filterContext);
   const ctxPagination = useContext(paginationContext);
-  const url = `https://hn.algolia.com/api/v1/search_by_date?query=${ctxFilter.filterNews}&page=${ctxPagination.currentPage}`
-  const { isLoading, error, data: dataFetched } = useHttp(url);
+  const url = `https://hn.algolia.com/api/v1/search_by_date?query=${ctxFilter.filterNews}&page=${ctxPagination.currentPage}`;
+  const { isLoading, error, data: dataFetched, maxPage } = useHttp(url);
+  const [itemsInLocalStorage, idArray, removeItem, addItem] = useLocalStorage();
+  const favoriteItems = Object.entries(itemsInLocalStorage[0]).map((i) => {
+    return JSON.parse(i[1]);
+  });
+
+  useEffect(() => {
+    ctxPagination.setMaxPage(maxPage);
+  });
 
   return (
     <div>
@@ -19,10 +28,23 @@ const Body = () => {
       {!error && !isLoading && ctxFilter.userFilter === "All" && (
         <section>
           <FilterDropdown />
-          <CardAll dataFetched={dataFetched} />
+          <CardAll
+            dataFetched={dataFetched}
+            idArray={idArray}
+            addItem={addItem}
+            removeItem={removeItem}
+            itemsInLocalStorage={itemsInLocalStorage}
+          />
         </section>
       )}
-      {!error && !isLoading && ctxFilter.userFilter !== "All" && <CardFaves />}
+      {!error && !isLoading && ctxFilter.userFilter !== "All" && (
+        <CardFaves
+          idArray={idArray}
+          favoriteItems={favoriteItems}
+          removeItem={removeItem}
+          addItem={addItem}
+        />
+      )}
     </div>
   );
 };
@@ -30,9 +52,6 @@ const Body = () => {
 export default Body;
 
 /*
-TERCERO:
-- AÑADE FUNCIONALIDAD DE FAVORITOS Y PAGINA DE FAVORITOS CON SUS DEBIDOS COMPONENTES INDIVIDUALES
-
 CUARTO:
 - AÑADE LOS ESTILOS Y TRASICIONES, CON VARIABLES DE CSS
 */

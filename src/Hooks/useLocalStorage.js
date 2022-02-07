@@ -29,7 +29,7 @@ const useLocalStorage = (key = "key", value = "value") => {
     }
   };
 
-  return [itemsInLocalStorage, removeItem, addItem, idArray];
+  return [itemsInLocalStorage, idArray, removeItem, addItem];
 };
 
 export default useLocalStorage;

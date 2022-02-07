@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 const paginationContext = React.createContext({
   currentPage: 1,
+  setMaxPage: () => {},
   setCurrentPage: (number)=>{},
   nextPage: () => {},
   previousPage: () => {},
@@ -9,6 +10,7 @@ const paginationContext = React.createContext({
 
 export const PaginationContextProvider = (props) => {
   const [cPage, setCPage] = useState(1);
+  const [maxPage, setMaxPage] = useState(50)
 
   const handleCurrentPage = (number) => {
     setCPage(number);
@@ -16,8 +18,8 @@ export const PaginationContextProvider = (props) => {
 
   const handleNextPage = () => {
     let number = cPage;
-    if (cPage >= 50) {
-      setCPage(50);
+    if (cPage >= maxPage) {
+      setCPage(maxPage);
     } else {
       number++;
       setCPage(number);
@@ -34,8 +36,13 @@ export const PaginationContextProvider = (props) => {
     }
   };
 
+  const handleMaxPage = (number) => {
+    setMaxPage(number)
+  }
+
   const value = {
     currentPage: cPage,
+    setMaxPage: handleMaxPage,
     setCurrentPage: handleCurrentPage,
     nextPage: handleNextPage,
     previousPage: handlePreviousPage,

@@ -1,33 +1,28 @@
-import React from "react";
 import CardItem from "./CardItem";
-import useLocalStorage from "../../Hooks/useLocalStorage";
 
-const CardFaves = () => {
-  const [itemsInLocalStorage, removeItem, addItem, idArray] = useLocalStorage();
-  let items = [];
-  const arr = Object.entries(itemsInLocalStorage[0]);
-  arr.map((i) => items.push(JSON.parse(i[1])));
-  console.log(items);
-  const selectedHandler = () => {}
+const CardFaves = ({ idArray, favoriteItems, removeItem }) => {
+  console.log(favoriteItems)
+
+  const selectedHandler = (news) => {
+    removeItem(news.story_id)
+  }
+
   return (
-    <div>
-      {items.map(
-        (i) =>
-          i.story_url && (
-            <CardItem
-              key={i.objectID}
-              title={i.story_title}
-              url={i.story_url || i.url}
-              item={i}
-              created={i.created_at}
-              author={i.author}
-              selected={selectedHandler}
-              id={i.story_id}
-              idArray={idArray}
-            />
-          )
-      )}
-    </div>
+    <ul>
+      {favoriteItems.map((news) => (
+        <CardItem
+          key={news.objectID}
+          title={news.story_title}
+          url={news.story_url || news.url}
+          item={news}
+          created={news.created_at}
+          author={news.author}
+          selected={selectedHandler}
+          id={news.story_id}
+          idArray={idArray}
+        />
+      ))}
+    </ul>
   );
 };
 

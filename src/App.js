@@ -3,6 +3,7 @@ import "./App.css";
 import Body from "./Components/Body/Body";
 import Footer from "./Components/Footer/Footer";
 import Header from "./Components/Header/Header";
+import useHttp from "./Hooks/useHttp";
 import filterContext from "./Store/filter-context";
 
 const App = () => {
