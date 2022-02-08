@@ -10,13 +10,17 @@ const useLocalStorage = (key = "key", value = "value") => {
       return value;
     }
   });
+
   let idArray = []
   const [itemsInLocalStorage] = useState([localStorage]);
   const arrayOfItemsInLocalStorage = Object.entries(itemsInLocalStorage[0])
   arrayOfItemsInLocalStorage.map(i => idArray.push(i[0]))
+
   const removeItem = (key) => {
     localStorage.removeItem(key);
+    setStoredValue(key)
   };
+
   const addItem = (key, value) => {
     try {
       const valueToStore =
@@ -27,6 +31,7 @@ const useLocalStorage = (key = "key", value = "value") => {
       console.log(error);
       throw new Error("Something went wrong while adding to faves :(");
     }
+
   };
 
   return [itemsInLocalStorage, idArray, removeItem, addItem];

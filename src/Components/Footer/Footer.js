@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import paginationContext from "../../Store/pagination-context";
-import ButtonsIcons from "./ButtonsIcons";
+import NumberButtons from "./NumberButtons";
 
 const Footer = () => {
   const [pagination, setPagination] = useState([]);
@@ -18,7 +18,7 @@ const Footer = () => {
 
   return (
     <div>
-      <ButtonsIcons number={pagination.length} pagination={pagination} />
+      <NumberButtons number={pagination.length} pagination={pagination} />
     </div>
   );
 };

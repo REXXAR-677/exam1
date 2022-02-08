@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const paginationContext = React.createContext({
   currentPage: 1,
   setMaxPage: () => {},
-  setCurrentPage: (number)=>{},
+  setCurrentPage: ()=>{},
   nextPage: () => {},
   previousPage: () => {},
 });

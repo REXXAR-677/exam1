@@ -1,7 +1,7 @@
 import React, { Fragment, useContext } from "react";
 import paginationContext from "../../Store/pagination-context";
 
-const ButtonsIcons = (props) => {
+const NumberButtons = (props) => {
   const ctxPagination = useContext(paginationContext);
   const paginate = (i) => { ctxPagination.setCurrentPage(i)}
   const handleNext = () => {
@@ -23,4 +23,4 @@ const ButtonsIcons = (props) => {
   );
 };
 
-export default ButtonsIcons;
+export default NumberButtons;

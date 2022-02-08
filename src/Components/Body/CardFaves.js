@@ -1,7 +1,6 @@
 import CardItem from "./CardItem";
 
 const CardFaves = ({ idArray, favoriteItems, removeItem }) => {
-  console.log(favoriteItems)
 
   const selectedHandler = (news) => {
     removeItem(news.story_id)

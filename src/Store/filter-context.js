@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
-import useLocalStorage from "../Hooks/useLocalStorage";
+import React, { useState } from "react";
 
 const filterContext = React.createContext({
   filterNews: "",
   userFilter: "",
-  setUserFilter: (filter) => {},
-  changeFilter: (filter) => {},
+  setUserFilter: () => {},
+  changeFilter: () => {},
 });
 
 export const FilterContextProvider = (props) => {

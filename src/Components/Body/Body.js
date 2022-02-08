@@ -8,11 +8,12 @@ import paginationContext from "../../Store/pagination-context";
 import useLocalStorage from "../../Hooks/useLocalStorage";
 
 const Body = () => {
-  const ctxFilter = useContext(filterContext);
-  const ctxPagination = useContext(paginationContext);
-  const url = `https://hn.algolia.com/api/v1/search_by_date?query=${ctxFilter.filterNews}&page=${ctxPagination.currentPage}`;
-  const { isLoading, error, data: dataFetched, maxPage } = useHttp(url);
   const [itemsInLocalStorage, idArray, removeItem, addItem] = useLocalStorage();
+  const ctxPagination = useContext(paginationContext);
+  const ctxFilter = useContext(filterContext);
+  const url = `https://hn.algolia.com/api/v1/search_by_date?query=${ctxFilter.filterNews}&page=${ctxPagination.currentPage -1}`;
+  const { isLoading, error, data: dataFetched, maxPage } = useHttp(url);
+  
   const favoriteItems = Object.entries(itemsInLocalStorage[0]).map((i) => {
     return JSON.parse(i[1]);
   });
@@ -50,8 +51,3 @@ const Body = () => {
 };
 
 export default Body;
-
-/*
-CUARTO:
-- AÑADE LOS ESTILOS Y TRASICIONES, CON VARIABLES DE CSS
-*/
