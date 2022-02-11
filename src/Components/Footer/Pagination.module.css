@@ -1,7 +1,6 @@
 .paginationNumber_container {
   display: flex;
   justify-content: space-evenly;
-  width: 50%;
   height: max-content;
 }
 .paginationNumber_btn {
@@ -10,7 +9,7 @@
   cursor: pointer;
   height: 30px;
   width: 30px;
-  margin: 0 5px;
+  margin: 0 0.5vw;
   border-radius: 6px;
   color: var(--dark);
   border: 1px solid var(--grey-medium);
@@ -19,7 +18,7 @@
 .paginationNumber_btn-active {
   font-family: Roboto;
   cursor: pointer;
-  margin: 0 5px;
+  margin: 0 0.5vw;
   height: 30px;
   width: 30px;
   color: var(--ligther);
