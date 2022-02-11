@@ -45,7 +45,7 @@ const CardItem = ({
   };
 
   return (
-    <li className={classes.cardContainer}>
+    <li className={`${classes.cardContainer} animate__animated animate__fadeIn`}>
       <a href={url} className={classes.cardContainer_link}>
         <div className={classes.cardContainer_header}>
           <div className={classes.cardContainer_header}>

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import classes from "./Pagination.module.css";
 import paginationContext from "../../Store/pagination-context";
 

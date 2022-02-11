@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import DropdownItems from "./DropdownItems";
 import filterContext from "../../Store/filter-context";
 import classes from "./DropdownMenu.module.css";
