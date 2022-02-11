@@ -1,3 +1,4 @@
+## App desing
 ### Packages, libraries and available scripts
 
 #### react-lottie
@@ -35,6 +36,37 @@ This command checks that files are already formatted with prettier, rather than 
 ```
 
 #### npm run prettier-fix
+
 ```
 This command format and overwritte all files with prettier styles.
+```
+
+### Folder structure
+
+```
+Main folder: src Package Manager: npm React/Javascript
+```
+
+#### Assets
+
+```
+Images, assets and lottie files.
+```
+
+#### Components
+
+```
+In this folder are all the components of the application.
+```
+
+#### Hooks
+
+```
+Custom hooks implemented across the app.
+```
+
+#### Store
+
+```
+All contexts created with React.context are in this folders.
 ```
