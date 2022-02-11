@@ -1,0 +1,21 @@
+.dropdownContainer_items {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition:var(--transition-bg)
+}
+.dropdownContainer_items_icon {
+  padding-left: 5px;
+  width: 22px;
+  height: 20px;
+}
+.dropdownContainer_items_title {
+  padding-left: 10px;
+}
+
+.dropdownContainer_items:hover {
+  width: 100%;
+  background-color: var(--blue-medium);
+}

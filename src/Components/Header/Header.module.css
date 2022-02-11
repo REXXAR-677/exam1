@@ -1,0 +1,31 @@
+.headerContainer {
+  display: block;
+}
+.headerContainer_title {
+  padding-top: 44px;
+  padding-bottom: 42px;
+  padding-left: 150px;
+  box-shadow: var(--title-shadow);
+  background-image: var(--bg-gradient);
+}
+.headerContainer_title_text {
+  width: auto;
+  height: 28px;
+  object-fit: contain;
+  font-family: Baskerville;
+  font-size: 28px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  color: var(--title-font-color);
+}
+.headerContainer_selection {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  top: 50px;
+}

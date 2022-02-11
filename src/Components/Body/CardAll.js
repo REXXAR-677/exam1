@@ -1,9 +1,15 @@
 import CardItem from "./CardItem";
-import useLocalStorage from "../../Hooks/useLocalStorage";
 import { useCallback, useEffect, useState } from "react";
+import classes from "./cards.module.css";
 
-const CardAll = ({ dataFetched, itemsInLocalStorage, addItem, removeItem, idArray }) => {
-  const [show, setShow] = useState();
+const CardAll = ({
+  dataFetched,
+  itemsInLocalStorage,
+  addItem,
+  removeItem,
+  idArray,
+}) => {
+  const [showItems, setShowItems] = useState();
 
   const selectedHandler = useCallback(
     (selectedNews) => {
@@ -17,13 +23,13 @@ const CardAll = ({ dataFetched, itemsInLocalStorage, addItem, removeItem, idArra
   );
 
   useEffect(() => {
-    setShow(dataFetched);
+    setShowItems(dataFetched);
   }, [dataFetched]);
 
   return (
-    <ul>
-      {show !== undefined &&
-        show.map(
+    <ul className={classes.container_inner}>
+      {showItems !== undefined &&
+        showItems.map(
           (item) =>
             item.story_url && (
               <CardItem

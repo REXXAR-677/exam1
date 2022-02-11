@@ -1,15 +1,14 @@
-import { Fragment } from "react";
-import "./SelectionButtons.css";
+import classes from "./SelectionButtons.module.css";
 
-const SelectionButtons = (props) => {
+const SelectionButtons = ({styles, selected, children}) => {
   const handleClick = () => {
-    props.selected(props.children);
+    selected(children);
   };
 
   return (
-    <Fragment>
-      <button className={props.styl} onClick={handleClick}>{props.children}</button>
-    </Fragment>
+    <button className={styles ? classes['btn-active'] : classes.btn} onClick={handleClick}>
+      {children}
+    </button>
   );
 };
 

@@ -1,0 +1,30 @@
+.paginationNumber_container{
+  display: flex;
+  justify-content: space-evenly;
+  width: 50%;
+  height: max-content;
+}
+.paginationNumber_btn{
+  font-family: Roboto;
+  background-color: var(--ligther);
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  margin: 0 5px;
+  border-radius: 6px;
+  color: var(--dark);
+  border: 1px solid var(--grey-medium);
+  transition: all 0.5s ease;
+}
+.paginationNumber_btn-active{
+  font-family: Roboto;
+  cursor: pointer;
+  margin: 0 5px;
+  height: 30px;
+  width: 30px;
+  color: var(--ligther);
+  border-radius: 6px;
+  border: 1px solid var(--grey-medium);
+  background-color: var(--blue-medium);
+  transition:var(--transition-bg)
+}

@@ -1,31 +1,32 @@
-import { Fragment, useContext, useState } from "react";
+import { useContext } from "react";
 import filterContext from "../../Store/filter-context";
 import SelectionButtons from "./SelectionButtons";
-
+import classes from "./Header.module.css";
 
 const Header = () => {
   const ctx = useContext(filterContext);
   const options = ["All", "My faves"];
 
-  const handleSelection = (name) => {
-    ctx.setUserFilter(name)
+  const handleSelection = (option) => {
+    ctx.setUserFilter(option);
   };
+
   return (
-    <Fragment>
-      <section>
-        <h1>HACKER NEWS</h1>
+    <div className={classes.headerContainer}>
+      <section className={classes.headerContainer_title}>
+        <h1 className={classes.headerContainer_title_text}>HACKER NEWS</h1>
       </section>
-      <section>
+      <section className={classes.headerContainer_selection}>
         {options.map((button, index) => (
           <SelectionButtons
             key={index}
-            styl={button === ctx.userFilter ? "blue" : ""}
-            selected={(x) => handleSelection(x)}
+            styles={button === ctx.userFilter ? "blue" : ""}
+            selected={handleSelection}
             children={button}
           />
         ))}
       </section>
-    </Fragment>
+    </div>
   );
 };
 

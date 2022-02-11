@@ -1,0 +1,22 @@
+.btn {
+  cursor: pointer;
+  padding: 2px 30px;
+  background-color: var(--ligther);
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 2px;
+  border: 1px solid var(--grey-ligther);
+  color: var(--grey-dark);
+}
+.btn-active {
+  cursor: pointer;
+  padding: 2px 30px;
+  background-color: var(--ligther);
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 2px;
+  border: 1px solid var(--blue-ligth);
+  color: var(--blue-ligth);
+}

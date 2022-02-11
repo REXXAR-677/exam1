@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import paginationContext from "../../Store/pagination-context";
-import NumberButtons from "./NumberButtons";
+import Pagination from "./Pagination";
+import classes from "./Footer.module.css"
 
 const Footer = () => {
   const [pagination, setPagination] = useState([]);
@@ -17,8 +18,8 @@ const Footer = () => {
   }, [ctxPagination.currentPage]);
 
   return (
-    <div>
-      <NumberButtons number={pagination.length} pagination={pagination} />
+    <div className={classes.paginationContainer}>
+      <Pagination number={pagination.length} pagination={pagination} />
     </div>
   );
 };
