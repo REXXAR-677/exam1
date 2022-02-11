@@ -1,7 +1,7 @@
 import CardItem from "./CardItem";
-import noFoundFaves from "../../Assets/no-faves-found.json"
+import noFoundFaves from "../../Assets/no-faves-found.json";
 import Lottie from "react-lottie";
-import classes from "./cards.module.css"
+import classes from "./cards.module.css";
 
 const defaultOptionsNoFaves = {
   loop: true,
@@ -10,7 +10,7 @@ const defaultOptionsNoFaves = {
   redererSettings: {
     preserverAspectRatio: "xMidYMid slice",
   },
-}
+};
 
 const CardFaves = ({ idArray, favoriteItems, removeItem }) => {
   const selectedHandler = (news) => {
@@ -19,7 +19,9 @@ const CardFaves = ({ idArray, favoriteItems, removeItem }) => {
 
   return (
     <div>
-      {favoriteItems.length < 1 && <Lottie options={defaultOptionsNoFaves} height={400} width={400} />}
+      {favoriteItems.length < 1 && (
+        <Lottie options={defaultOptionsNoFaves} height={400} width={400} />
+      )}
       {favoriteItems.length > 0 && (
         <ul className={classes.container_inner}>
           {favoriteItems.map((news) => (

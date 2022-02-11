@@ -9,7 +9,7 @@ import useLocalStorage from "../../Hooks/useLocalStorage";
 import Lottie from "react-lottie";
 import loadingAnimation from "../../Assets/loading.json";
 import notFoundAnimation from "../../Assets/not-found.json";
-import classes from './cards.module.css'
+import classes from "./cards.module.css";
 
 const defaultOptionsLoading = {
   loop: true,

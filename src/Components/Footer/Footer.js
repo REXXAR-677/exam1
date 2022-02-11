@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import paginationContext from "../../Store/pagination-context";
 import Pagination from "./Pagination";
-import classes from "./Footer.module.css"
+import classes from "./Footer.module.css";
 
 const Footer = () => {
   const [pagination, setPagination] = useState([]);
@@ -11,7 +11,9 @@ const Footer = () => {
     let arrayOfPageNumbers = [];
     const getPagination = () => {
       let pageNumbers = Math.floor((ctxPagination.currentPage - 1) / 9) * 9;
-      return (arrayOfPageNumbers = Array(9).fill().map((_, index) => pageNumbers + index + 1));
+      return (arrayOfPageNumbers = Array(9)
+        .fill()
+        .map((_, index) => pageNumbers + index + 1));
     };
     getPagination();
     setPagination(arrayOfPageNumbers);

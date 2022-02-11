@@ -13,7 +13,7 @@ const App = () => {
     <div>
       <Header />
       <Body />
-      {userFilter && <Footer/>}
+      {userFilter && <Footer />}
     </div>
   );
 };

@@ -1,10 +1,10 @@
-.paginationNumber_container{
+.paginationNumber_container {
   display: flex;
   justify-content: space-evenly;
   width: 50%;
   height: max-content;
 }
-.paginationNumber_btn{
+.paginationNumber_btn {
   font-family: Roboto;
   background-color: var(--ligther);
   cursor: pointer;
@@ -16,7 +16,7 @@
   border: 1px solid var(--grey-medium);
   transition: all 0.5s ease;
 }
-.paginationNumber_btn-active{
+.paginationNumber_btn-active {
   font-family: Roboto;
   cursor: pointer;
   margin: 0 5px;
@@ -26,5 +26,5 @@
   border-radius: 6px;
   border: 1px solid var(--grey-medium);
   background-color: var(--blue-medium);
-  transition:var(--transition-bg)
+  transition: var(--transition-bg);
 }

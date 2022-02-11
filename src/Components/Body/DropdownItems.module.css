@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  transition:var(--transition-bg)
+  transition: var(--transition-bg);
 }
 .dropdownContainer_items_icon {
   padding-left: 5px;

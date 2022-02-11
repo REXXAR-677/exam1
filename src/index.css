@@ -12,21 +12,21 @@ code {
 }
 
 :root {
-  --blue-ligth:#1797ff;
-  --blue-medium:#1890ff;
-  --grey-ligther:#d6d6d6;;
-  --grey-ligth:#979797;
-  --grey-medium:#767676;
-  --grey-dark:#606060;
-  --grey-darker:#6b6b6b;
-  --dark:#2e2e2e;
-  --darker:#0000;
-  --ligth:#dad8d8;
-  --ligther:#fff;
-  --title-font-color:#3b3b3b;
-  
+  --blue-ligth: #1797ff;
+  --blue-medium: #1890ff;
+  --grey-ligther: #d6d6d6;
+  --grey-ligth: #979797;
+  --grey-medium: #767676;
+  --grey-dark: #606060;
+  --grey-darker: #6b6b6b;
+  --dark: #2e2e2e;
+  --darker: #0000;
+  --ligth: #dad8d8;
+  --ligther: #fff;
+  --title-font-color: #3b3b3b;
+
   --speed: 750ms;
-  --title-shadow:0 1px 4px 0 rgb(0 21 41 / 12%);
-  --bg-gradient:linear-gradient(180deg, #ececec -32%, #fff 124%);
+  --title-shadow: 0 1px 4px 0 rgb(0 21 41 / 12%);
+  --bg-gradient: linear-gradient(180deg, #ececec -32%, #fff 124%);
   --transition-bg: background 0.25s ease-in-out, transform 0.15s ease;
 }
