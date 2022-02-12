@@ -51,6 +51,7 @@ const CardItem = ({
           <div className={classes.cardContainer_header}>
             <img
               src={timeLogo}
+              alt="timeLogo"
               width={15}
               className={classes.cardContainer_header_img}
             />
