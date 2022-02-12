@@ -29,7 +29,7 @@ const Footer = () => {
     };
     getPagination();
     setPagination(arrayOfPageNumbers);
-  }, [ctxPagination.currentPage]);
+  }, [ctxPagination.currentPage, ctxPagination.maxPage]);
 
   return (
     <div className={classes.paginationContainer}>

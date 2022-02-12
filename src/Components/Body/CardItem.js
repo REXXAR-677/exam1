@@ -37,7 +37,7 @@ const CardItem = ({
     }
     const checkFavorites = idArray.indexOf(id.toString()) !== -1;
     setIsFavorite(checkFavorites);
-  }, []);
+  }, [created, id, idArray]);
 
   const handler = () => {
     setIsFavorite(!isFavorite);
