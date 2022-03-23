@@ -1,7 +1,6 @@
 .filterContainer {
   display: flex;
   justify-content: flex-start;
-  min-width: 180px;
   cursor: pointer;
   position: relative;
   transition: all 0.5s ease;
@@ -9,7 +8,7 @@
 .filterContainer_header {
   height: 15px;
   font-size: 14px;
-  width: 20%;
+  width: min(35vw, 160px);
   display: flex;
   justify-content: space-between;
   border-radius: 4px;
@@ -33,8 +32,8 @@
   background-color: var(--ligther);
   height: 150px;
   font-size: 14px;
-  min-width: 160px;
-  width: 20.5%;
+  /* min-width: 160px; */
+  width: min(38vw, 170px);
   box-shadow: 0 2px 2px 0 var(--ligth);
 }
 

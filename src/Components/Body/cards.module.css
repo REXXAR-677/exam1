@@ -1,14 +1,22 @@
 .container {
   margin: 100px;
 }
+
 .container_inner {
   list-style-type: none;
+  width: 100%;
   display: grid;
+  justify-content: center;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
   grid-row-gap: 30px;
   row-gap: 30px;
   grid-column-gap: 40px;
   column-gap: 40px;
   padding: 0;
+}
+
+@media (max-width: 600px) {
+  .container_inner {
+    grid-template-columns: 1fr;
+  }
 }
