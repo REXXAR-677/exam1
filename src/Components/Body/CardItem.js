@@ -23,7 +23,7 @@ const CardItem = ({
   useEffect(() => {
     const checkFavorites = idArray.indexOf(id) !== -1;
     setIsFavorite(checkFavorites);
-  }, [idArray, id]);
+  }, [created, id, idArray]);
 
   const handleSetFavorite = () => {
     setIsFavorite(!isFavorite);
