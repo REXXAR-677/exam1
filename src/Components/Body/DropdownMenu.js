@@ -20,7 +20,7 @@ const DropdownMenu = () => {
         }}
       >
         <p className={classes.filterContainer_header_title}>Select your news</p>
-        <img className={classes.filterContainer_header_icon} src={arrowDown} />
+        <img alt="img" className={classes.filterContainer_header_icon} src={arrowDown} />
       </div>
       {open && (
         <div

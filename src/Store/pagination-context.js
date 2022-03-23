@@ -11,7 +11,7 @@ const paginationContext = React.createContext({
 
 export const PaginationContextProvider = (props) => {
   const [cPage, setCPage] = useState(1);
-  const [maxPage, setMaxPage] = useState(50);
+  const [maxPage, setMaxPage] = useState(null);
 
   const handleCurrentPage = (number) => {
     setCPage(number);

@@ -1,6 +1,7 @@
 import CardItem from "./CardItem";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useContext } from "react";
 import classes from "./cards.module.css";
+import filterContext from "../../Store/filter-context";
 
 const CardAll = ({
   dataFetched,
@@ -10,16 +11,18 @@ const CardAll = ({
   idArray,
 }) => {
   const [showItems, setShowItems] = useState();
+  const ctxFilter = useContext(filterContext);
 
   const selectedHandler = useCallback(
     (selectedNews) => {
-      if (itemsInLocalStorage[0].getItem(selectedNews.story_id) === null) {
-        addItem(selectedNews.story_id, selectedNews);
+      let key = `${ctxFilter.filterNews}${selectedNews.story_id}${selectedNews.author}${selectedNews.created_at}`;
+      if (itemsInLocalStorage[0].getItem(key) === null) {
+        addItem(key, selectedNews);
       } else {
-        removeItem(selectedNews.story_id);
+        removeItem(key);
       }
     },
-    [itemsInLocalStorage, removeItem, addItem]
+    [itemsInLocalStorage, removeItem, addItem, ctxFilter.filterNews]
   );
 
   useEffect(() => {
@@ -40,7 +43,7 @@ const CardAll = ({
                 created={item.created_at}
                 author={item.author}
                 selected={selectedHandler}
-                id={item.story_id}
+                id={`${item.story_id}${item.author}${ctxFilter.filterNews}${item.created_at}`}
                 idArray={idArray}
               />
             )

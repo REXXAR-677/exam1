@@ -12,9 +12,10 @@ const defaultOptionsNoFaves = {
   },
 };
 
-const CardFaves = ({ idArray, favoriteItems, removeItem }) => {
+const CardFaves = ({ idArray, favoriteItems, removeItem,selectedFilter }) => {
   const selectedHandler = (news) => {
-    removeItem(news.story_id);
+    const key = `${selectedFilter}${news.story_id}${news.author}${news.created_at}`
+    removeItem(key)
   };
 
   return (
@@ -33,7 +34,7 @@ const CardFaves = ({ idArray, favoriteItems, removeItem }) => {
               created={news.created_at}
               author={news.author}
               selected={selectedHandler}
-              id={news.story_id}
+              id={`${selectedFilter}${news.story_id}${news.author}${news.created_at}`}
               idArray={idArray}
             />
           ))}

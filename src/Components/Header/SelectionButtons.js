@@ -7,7 +7,7 @@ const SelectionButtons = ({ styles, selected, children }) => {
 
   return (
     <button
-      className={styles ? classes["btn-active"] : classes.btn}
+      className={styles ? `${classes.btn} ${classes["btn-active"]}` : classes.btn}
       onClick={handleClick}
     >
       {children}

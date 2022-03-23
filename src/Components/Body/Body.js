@@ -71,6 +71,7 @@ const Body = () => {
           favoriteItems={favoriteItems}
           removeItem={removeItem}
           addItem={addItem}
+          selectedFilter={ctxFilter.filterNews}
         />
       )}
     </div>
