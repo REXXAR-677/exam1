@@ -48,10 +48,10 @@ const Body = () => {
   return (
     <div className={classes.container}>
       {isLoading && (
-        <Lottie options={defaultOptionsLoading} height={400} width={400} />
+        <Lottie options={defaultOptionsLoading} height={250} width={250} />
       )}
       {error && !isLoading && (
-        <Lottie options={defaultOptionsNotFound} height={400} width={400} />
+        <Lottie options={defaultOptionsNotFound} height={250} width={250} />
       )}
       {!error && !isLoading && ctxFilter.userFilter === "All" && (
         <section>

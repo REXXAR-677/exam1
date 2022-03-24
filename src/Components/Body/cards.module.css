@@ -1,5 +1,7 @@
 .container {
   margin: 100px;
+  display: flex;
+  justify-content: center;
 }
 
 .container_inner {

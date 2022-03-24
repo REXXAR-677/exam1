@@ -19,9 +19,9 @@ const CardFaves = ({ idArray, favoriteItems, removeItem,selectedFilter }) => {
   };
 
   return (
-    <div>
+    <div style={{display: "flex", justifyContent: "center"}}>
       {favoriteItems.length < 1 && (
-        <Lottie options={defaultOptionsNoFaves} height={400} width={400} />
+        <Lottie options={defaultOptionsNoFaves} height={250} width={250}/>
       )}
       {favoriteItems.length > 0 && (
         <ul className={classes.container_inner}>
