@@ -29,6 +29,7 @@ const CardAll = ({
     setShowItems(dataFetched);
   }, [dataFetched]);
 
+
   return (
     <ul className={classes.container_inner}>
       {showItems !== undefined &&
@@ -43,8 +44,9 @@ const CardAll = ({
                 created={item.created_at}
                 author={item.author}
                 selected={selectedHandler}
-                id={`${item.story_id}${item.author}${ctxFilter.filterNews}${item.created_at}`}
+                id={`${ctxFilter.filterNews}${item.story_id}${item.author}${item.created_at}`}
                 idArray={idArray}
+                // isFav={localStorage}
               />
             )
         )}
